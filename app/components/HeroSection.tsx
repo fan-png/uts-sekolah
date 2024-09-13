@@ -36,7 +36,7 @@ export default function HeroSection() {
     <div className="relative min-h-screen flex flex-col bg-blue-900 text-white">
       {/* Navigation */}
       <nav
-        className={`fixed top-0 w-full z-20 flex items-center justify-between p-6 transition-colors duration-300 ${
+        className={`fixed top-0 w-full z-30 flex items-center justify-between p-6 transition-colors duration-300 ${
           isScrolled ? 'bg-cyan-300' : 'bg-transparent'
         }`}
       >
@@ -69,7 +69,7 @@ export default function HeroSection() {
 
         {/* Hamburger Menu Button (Mobile) */}
         <button
-          className="md:hidden text-white relative z-30" // Ensure higher z-index
+          className="md:hidden text-white relative z-40" // Higher z-index
           onClick={toggleMenu}
         >
           <svg
@@ -91,50 +91,54 @@ export default function HeroSection() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-0 left-0 w-full h-1/2 bg-blue-900 z-20 flex flex-col items-center justify-center space-y-4 transition-transform transform ${
+        className={`fixed inset-0 z-40 bg-blue-900 bg-opacity-90 flex flex-col items-center justify-center space-y-4 transition-transform transform ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         } ease-out duration-300`}
+        onClick={toggleMenu} // Close menu on outside click
       >
-        {/* Close Button */}
-        <button
-          className="absolute top-4 right-4 text-white relative z-30" // Ensure higher z-index
-          onClick={toggleMenu}
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        {/* Prevent clicks on the menu content from closing the menu */}
+        <div className="relative z-50 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 text-white"
+            onClick={toggleMenu}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
 
-        <a href="#" className="text-white text-lg" onClick={toggleMenu}>
-          Product
-        </a>
-        <a href="#" className="text-white text-lg" onClick={toggleMenu}>
-          Blog
-        </a>
-        <a href="#" className="text-white text-lg" onClick={toggleMenu}>
-          Support
-        </a>
-        <a href="#" className="text-white text-lg" onClick={toggleMenu}>
-          Log In
-        </a>
-        <a
-          href="#"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-          onClick={toggleMenu}
-        >
-          Get Access
-        </a>
+          <a href="#" className="text-white text-lg" onClick={toggleMenu}>
+            Product
+          </a>
+          <a href="#" className="text-white text-lg" onClick={toggleMenu}>
+            Blog
+          </a>
+          <a href="#" className="text-white text-lg" onClick={toggleMenu}>
+            Support
+          </a>
+          <a href="#" className="text-white text-lg" onClick={toggleMenu}>
+            Log In
+          </a>
+          <a
+            href="#"
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={toggleMenu}
+          >
+            Get Access
+          </a>
+        </div>
       </div>
 
       {/* Hero Content */}
