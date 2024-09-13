@@ -42,9 +42,9 @@ export default function HeroSection() {
       >
         <div className="text-center">
           <img
-            src="/images/logo.png" // Ganti dengan path gambar yang sesuai
-            alt="Team Image" // Deskripsi alternatif gambar
-            className="w-32 h-auto" // Sesuaikan ukuran gambar sesuai kebutuhan
+            src="/images/logo.png"
+            alt="Team Image"
+            className="w-32 h-auto"
           />
         </div>
 
@@ -68,7 +68,10 @@ export default function HeroSection() {
         </div>
 
         {/* Hamburger Menu Button (Mobile) */}
-        <button className="md:hidden text-white" onClick={toggleMenu}>
+        <button
+          className="md:hidden text-white relative z-30" // Ensure higher z-index
+          onClick={toggleMenu}
+        >
           <svg
             className="h-6 w-6"
             fill="none"
@@ -94,7 +97,7 @@ export default function HeroSection() {
       >
         {/* Close Button */}
         <button
-          className="absolute top-4 right-4 text-white"
+          className="absolute top-4 right-4 text-white relative z-30" // Ensure higher z-index
           onClick={toggleMenu}
         >
           <svg
