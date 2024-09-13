@@ -17,7 +17,7 @@ const DistributedTeamsSection = () => {
       </div>
       <div className="md:w-1/2 flex justify-center">
         <Image
-          src="/images/Mockup.png" // Update with the correct path to your image
+          src="/images/mockup.png" // Update with the correct path to your image
           alt="Team Dashboard Mockup"
           width={600} // Adjust based on your design
           height={400} // Adjust based on your design
